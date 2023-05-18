@@ -1,0 +1,35 @@
+---
+- hosts: terraform-ansible
+  tasks:
+  - name: Instalando python3, virtualenv
+    apt:
+      update_cache: yes
+      cache_valid_time: 3600
+      name: "{{ item }}"
+      state: latest
+    become: yes
+    with_items:
+      - python3
+      - virtualenv
+  - name: Instalando dependencias com pip (Django e Django Rest)
+    pip:
+      virtualenv: /home/ubuntu/tcc/venv
+      name:
+        - django
+        - djangorestframework
+  - name: Iniciando o projeto
+    shell: '. /home/ubuntu/tcc/venv/bin/activate; django-admin startproject setup /home/ubuntu/tcc'
+  - name: Alterando o hosts do settings
+    lineinfile:
+      path: /home/ubuntu/tcc/setup/settings.py
+      regexp: 'ALLOWED_HOSTS'
+      line: 'ALLOWED_HOSTS = ["*"]'
+      backrefs: yes
+
+# /*
+#    COMANDS PROMPT
+#    ansible-playbook playbook.yml -u ubuntu --private-key iac-terraform -i hosts.yml
+
+#   . venv/bin/activate
+#   python manage.py runserver 0.0.0.0:8000
+# */

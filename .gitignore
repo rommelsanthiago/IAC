@@ -1,3 +1,9 @@
+.gitignore
+
+# Local files
+iac-terraform
+iac-terraform.pub
+
 # Local .terraform directories
 **/.terraform/*
 
@@ -32,3 +38,4 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
+.terraform.lock.hcl
