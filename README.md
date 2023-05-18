@@ -25,3 +25,9 @@ E rode os seguintes comandos
 ``. venv/bin/activate`` Ativa o venv
 
 ``python manage.py runserver 0.0.0.0:8000`` Inicia o serviço na web
+
+## 🧑🏾‍💻 Autor
+### Rommel Santhiago
+
+### https://www.linkedin.com/in/rommelsanthiago
+### rommel.santhiago@gmail.com
